@@ -1,4 +1,4 @@
-(defproject sample-3 "0.1.1-SNAPSHOT"
+(defproject sample-3 "0.1.2-SNAPSHOT"
 
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
@@ -57,6 +57,7 @@
   :profiles
   {:uberjar {:omit-source true
              :prep-tasks ["compile" ["cljsbuild" "once" "min"]]
+             :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]
              :cljsbuild
              {:builds
               {:min
@@ -89,7 +90,9 @@
                                  [figwheel-sidecar "0.5.18"]
                                  [pjstadig/humane-test-output "0.9.0"]
                                  [prone "1.6.1"]
-                                 [re-frisk "0.5.4.1"]
+                                 ;[re-frisk "0.5.4.1"]
+                                 [day8.re-frame/re-frame-10x "0.4.3"]
+                                 [day8.re-frame/tracing "0.5.1"]
                                  [ring/ring-devel "1.7.1"]
                                  [ring/ring-mock "0.3.2"]]
                   :plugins      [[com.jakemccrary/lein-test-refresh "0.24.1"]
@@ -102,9 +105,10 @@
                      :figwheel {:on-jsload "sample-3.core/mount-components"}
                      :compiler
                      {:output-dir "target/cljsbuild/public/js/out"
-                      :closure-defines {"re_frame.trace.trace_enabled_QMARK_" true}
+                      :closure-defines {"re_frame.trace.trace_enabled_QMARK_" true
+                                        "day8.re_frame.tracing.trace_enabled_QMARK_"  true}
                       :optimizations :none
-                      :preloads [re-frisk.preload]
+                      :preloads [day8.re-frame-10x.preload]
                       :output-to "target/cljsbuild/public/js/app.js"
                       :asset-path "/js/out"
                       :source-map true

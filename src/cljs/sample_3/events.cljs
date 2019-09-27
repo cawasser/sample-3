@@ -3,6 +3,11 @@
     [re-frame.core :as rf]
     [ajax.core :as ajax]))
 
+
+
+
+
+
 ;;dispatchers
 
 (rf/reg-event-db
@@ -27,6 +32,13 @@
   :common/set-error
   (fn [db [_ error]]
     (assoc db :common/error error)))
+
+
+
+
+
+
+
 
 ;;subscriptions
 
