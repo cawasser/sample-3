@@ -55,37 +55,36 @@
     {:swagger {:tags ["math"]}}
 
     ["/plus"
-     {:get {:summary "plus with spec query parameters"
-            :parameters {:query {:x int?, :y int?}}
-            :responses {200 {:body {:total pos-int?}}}
-            :handler (fn [{{{:keys [x y]} :query} :parameters}]
-                       {:status 200
-                        :body {:total (+ x y)}})}
-      :post {:summary "plus with spec body parameters"
+     {:post {:summary "plus with spec body parameters"
              :parameters {:body {:x int?, :y int?}}
-             :responses {200 {:body {:total pos-int?}}}
+             :responses {200 {:body {:total int?}}}
              :handler (fn [{{{:keys [x y]} :body} :parameters}]
+                        (prn "plus" x y)
                         {:status 200
-                         :body {:total (+ x y)}})}}]]
-
-   ["/files"
-    {:swagger {:tags ["files"]}}
-
-    ["/upload"
-     {:post {:summary "upload a file"
-             :parameters {:multipart {:file multipart/temp-file-part}}
-             :responses {200 {:body {:name string?, :size int?}}}
-             :handler (fn [{{{:keys [file]} :multipart} :parameters}]
+                         :body {:total (+ x y)}})}}]
+    ["/minus"
+     {:post {:summary "minus with spec body parameters"
+             :parameters {:body {:x int?, :y int?}}
+             :responses {200 {:body {:total int?}}}
+             :handler (fn [{{{:keys [x y]} :body} :parameters}]
+                        (prn "minus" x y)
                         {:status 200
-                         :body {:name (:filename file)
-                                :size (:size file)}})}}]
+                         :body {:total (- x y)}})}}]
+    ["/mult"
+     {:post {:summary "multiply with spec body parameters"
+             :parameters {:body {:x int?, :y int?}}
+             :responses {200 {:body {:total int?}}}
+             :handler (fn [{{{:keys [x y]} :body} :parameters}]
+                        (prn "mult" x y)
+                        {:status 200
+                         :body {:total (* x y)}})}}]
+    ["/div"
+     {:post {:summary "divide with spec body parameters"
+             :parameters {:body {:x int?, :y int?}}
+             :responses {200 {:body {:total int?}}}
+             :handler (fn [{{{:keys [x y]} :body} :parameters}]
+                        (prn "div" x y)
+                        {:status 200
+                         :body {:total (quot x y)}})}}]]])
 
-    ["/download"
-     {:get {:summary "downloads a file"
-            :swagger {:produces ["image/png"]}
-            :handler (fn [_]
-                       {:status 200
-                        :headers {"Content-Type" "image/png"}
-                        :body (-> "public/img/warning_clojure.png"
-                                  (io/resource)
-                                  (io/input-stream))})}}]]])
+
