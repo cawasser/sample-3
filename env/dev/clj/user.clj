@@ -4,7 +4,7 @@
     [clojure.spec.alpha :as s]
     [expound.alpha :as expound]
     [mount.core :as mount]
-    ;[sample-3.figwheel :refer [start-fw stop-fw cljs]]
+    [sample-3.figwheel :refer [start-fw stop-fw cljs]]
     [sample-3.core :refer [start-app]]))
 
 (alter-var-root #'s/*explain-out* (constantly expound/printer))
