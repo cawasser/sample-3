@@ -101,6 +101,7 @@
 
 (defn home-page []
   [:section.section>div.container>div.content
+   [:div [:p "fetch-test"]]
    [:div.button.is-medium.is-primary {:on-click #(new-equation)}
     [:i.material-icons.is-medium :fiber_new]]
    [:table
