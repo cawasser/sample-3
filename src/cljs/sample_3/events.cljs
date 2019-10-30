@@ -84,6 +84,13 @@
 
 ;;subscriptions
 
+
+(rf/reg-sub
+  :fetch-test-message
+  (fn [db _]
+    "once last update before now we'll go from b -> a"))
+
+
 (rf/reg-sub
   :answers
   (fn [db _]
