@@ -88,7 +88,7 @@
 (rf/reg-sub
   :fetch-test-message
   (fn [db _]
-    "making another change to see how the commits flow back on merge/fetch"))
+    "making another change to see how the commits flow back on fetch"))
 
 
 (rf/reg-sub
