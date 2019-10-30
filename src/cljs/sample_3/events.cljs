@@ -88,7 +88,7 @@
 (rf/reg-sub
   :fetch-test-message
   (fn [db _]
-    "now we'll go from b -> a"))
+    "once last update before now we'll go from b -> a"))
 
 
 (rf/reg-sub
