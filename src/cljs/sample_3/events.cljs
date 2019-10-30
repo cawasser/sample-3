@@ -88,7 +88,7 @@
 (rf/reg-sub
   :fetch-test-message
   (fn [db _]
-    "yet another small change that flows from a -> b"))
+    "now we'll go from b -> a"))
 
 
 (rf/reg-sub
