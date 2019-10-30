@@ -101,6 +101,7 @@
 
 (defn home-page []
   [:section.section>div.container>div.content
+   [:div [:p "merge-test"]]
    [:div.button.is-medium.is-primary {:on-click #(new-equation)}
     [:i.material-icons.is-medium :fiber_new]]
    [:table
