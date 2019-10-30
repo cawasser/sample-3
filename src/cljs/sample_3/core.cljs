@@ -97,7 +97,7 @@
 
 (defn about-page []
   [:section.section>div.container>div.content
-   [:div [:p "making another change to see how the commits flow back on merge/fetch"]]
+   [:div [:p @(rf/subscribe [:fetch-test-message])]]
    [:img {:src "/img/warning_clojure.png"}]])
 
 (defn home-page []

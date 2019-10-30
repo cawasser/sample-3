@@ -84,6 +84,13 @@
 
 ;;subscriptions
 
+
+(rf/reg-sub
+  :fetch-test-message
+  (fn [db _]
+    "making another change to see how the commits flow back on merge/fetch"))
+
+
 (rf/reg-sub
   :answers
   (fn [db _]
